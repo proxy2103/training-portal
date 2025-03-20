@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIF EXPRESS PRIVATE LIMITED - Premium Employee Training Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        header {
+            background: linear-gradient(to right, #005AA7, #FFFDE4);
+            text-align: center;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to right, #FFFDE4, #005AA7);
+            padding: 12px;
+        }
+        nav a {
+            color: #000;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        nav a:hover {
+            color: #005AA7;
+        }
+        .language-select {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: #005AA7;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        section {
+            display: none;
+            padding: 35px;
+            max-width: 950px;
+            margin: 40px auto;
+            background-color: rgba(255,255,255,0.9);
+            color: #000;
+            border-radius: 15px;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+        }
+        footer {
+            text-align: center;
+            background: linear-gradient(to right, #005AA7, #FFFDE4);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            color: #000;
+            font-weight: 600;
+        }
+        button {
+            background-color: #005AA7;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004080;
+        }
+        .profile-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 26px;
+            cursor: pointer;
+            display: none;
+            color: #005AA7;
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => section.style.display = 'none');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+        }
+
+        function loginUser() {
+            const username = document.getElementById('username').value;
+            if(username.trim() !== ''){
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('profileIcon').style.display = 'block';
+                document.getElementById('profileName').textContent = username;
+                showSection('home');
+            } else {
+                alert('Please enter a valid username.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => showSection('home'));
+    </script>
+</head>
+<body>
+    <header>
+        <h1>IIF EXPRESS PRIVATE LIMITED</h1>
+        <p>Premium Employee Training & Self-Learning Portal</p>
+        <select class="language-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="mr">Marathi</option>
+        </select>
+        <i id="profileIcon" class="fas fa-user-circle profile-icon" onclick="showSection('profile')"></i>
+        <span id="profileName" style="position:absolute; top:25px; left:60px; color:#005AA7; font-weight:bold;"></span>
+    </header>
+
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('sessions')">Our Sessions</a>
+        <a onclick="showSection('socialmedia')">Social Media & Podcasts</a>
+        <a onclick="showSection('contact')">Contact Us</a>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to IIF Express Employee Portal</h2>
+        <button id="loginBtn" onclick="showSection('login')">Login</button>
+    </section>
+
+    <section id="login">
+        <h2>User Login</h2>
+        <input type="text" id="username" placeholder="User Name">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="loginUser()">Submit</button>
+    </section>
+
+    <section id="profile">
+        <h2>User Profile</h2>
+        <p>Name: <span id="userProfileName"></span></p>
+        <p>Progress: 75%</p>
+    </section>
+
+    <footer>
+        © 2024 IIF Express Private Limited. All Rights Reserved.
+    </footer>
+</body>
+</html>
